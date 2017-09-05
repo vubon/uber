@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Destination, RideInformation
+from .models import Passenger, RideInformation, Driver
 
 # Register your models here.
-admin.site.register(Destination)
+admin.site.register(Passenger)
+admin.site.register(Driver)
 admin.site.register(RideInformation)
