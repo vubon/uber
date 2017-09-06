@@ -1,11 +1,8 @@
-from django.shortcuts import render
 from rest_framework import status
-from django.http import Http404
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .models import RideInformation, Driver, Passenger
-from .serializers import RideSerializer, DriverSerializer, PassengerSerializer
+from .models import RideInformation
+from .serializers import RideSerializer
 
 # Create your views here.
 
@@ -46,17 +43,17 @@ class RideList(APIView):
 #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET'])
-def driver_list(request):
-    if request.method == 'GET':
-        drivers = Driver.objects.all()
-        serializer = DriverSerializer(drivers, many=True)
-        return Response(serializer.data)
-
-
-@api_view(['GET'])
-def passenger_list(request):
-    if request.method == 'GET':
-        passenger = Passenger.objects.all()
-        serializer = PassengerSerializer(passenger, many=True)
-        return Response(serializer.data)
+# @api_view(['GET'])
+# def driver_list(request):
+#     if request.method == 'GET':
+#         drivers = Driver.objects.all()
+#         serializer = DriverSerializer(drivers, many=True)
+#         return Response(serializer.data)
+#
+#
+# @api_view(['GET'])
+# def passenger_list(request):
+#     if request.method == 'GET':
+#         passenger = Passenger.objects.all()
+#         serializer = PassengerSerializer(passenger, many=True)
+#         return Response(serializer.data)

@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rides.apis import SignUpView, LogInView, LogOutView, RideView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('rides.urls')),
+    url(r'^', include('rides.urls', namespace='ride')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/sign_up/$', SignUpView.as_view(), name='sign_up'),
+    url(r'^api/log_in/$', LogInView.as_view(), name='log_in'),
+    url(r'^api/log_out/$', LogOutView.as_view(), name='log_out'),
 ]
